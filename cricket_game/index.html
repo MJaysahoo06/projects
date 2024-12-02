@@ -52,8 +52,10 @@
             };
 
             score.displayScore = function () {
-                return `No of matches = Won:${score.win},Lost:${score.lost},Tie:${score.tie}`;
+                return `Score = Won:${score.win},Lost:${score.lost},Tie:${score.tie}`;
             };
+
+            showResult();
 
         }
 
@@ -137,9 +139,13 @@
             // console.log(score);
             localStorage.setItem('Score', JSON.stringify(score));
 
-            document.querySelector('#user-move').innerText = `You have chosen ${userMove}`;
-            document.querySelector('#computer-move').innerText = `Computer have chosen ${computerMove}`;
-            document.querySelector('#result').innerText = result;
+            document.querySelector('#user-move').innerText = userMove ? `You have chosen ${userMove}` : " ";
+
+            document.querySelector('#computer-move').innerText = computerMove ? `Computer have chosen ${computerMove}` : " ";
+
+            // document.querySelector('#result').innerText = result ? result : " ";      or
+            document.querySelector('#result').innerText = result || " ";
+
             document.querySelector('#score').innerText = score.displayScore();
 
             // alert(`You have chosen ${userMove}. Computer choice is ${computerMove} 
